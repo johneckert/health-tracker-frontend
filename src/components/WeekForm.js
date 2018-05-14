@@ -11,9 +11,9 @@ class WeekForm extends Component {
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
   render() {
-    console.log(this.state.date);
     return (
       <form>
+        <h2>Week Form </h2>
         <input
           type="number"
           step="0.01"
