@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DateInput = props => {
+const TextInput = props => {
   const createTitle = () => {
     const titleArr = props.name.split('_');
     titleArr.map(word => {
@@ -14,9 +14,15 @@ const DateInput = props => {
   return (
     <div>
       <span>{createTitle()}</span>
-      <input type="date" name="date" value={props.date} onChange={props.handleChange} />
+      <input
+        type="text"
+        name={props.name}
+        checked={props.value}
+        value={props.value}
+        onChange={props.handleChange}
+      />
     </div>
   );
 };
 
-export default DateInput;
+export default TextInput;

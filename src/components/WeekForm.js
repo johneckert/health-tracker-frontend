@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import DateInput from './DateInput';
+import NumberInput from './NumberInput';
 
 class WeekForm extends Component {
   state = {
     weight: 0,
     waist: 0,
-    bodyFat: 0,
+    body_fat: 0,
     date: ''
   };
 
@@ -13,8 +15,12 @@ class WeekForm extends Component {
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
-    dd < 10 ? (dd = '0' + dd) : dd;
-    mm < 10 ? (mm = '0' + mm) : mm;
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
     this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
   };
 
@@ -29,36 +35,10 @@ class WeekForm extends Component {
     return (
       <form>
         <h2>Week Form </h2>
-        <label htmlFor="weight">Weight</label>
-        <input
-          type="number"
-          step="0.01"
-          name="weight"
-          value={this.state.weight}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="waist">Waist</label>
-        <input
-          type="number"
-          step="0.01"
-          name="waist"
-          value={this.state.waist}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="bodyFat">Body Fat</label>
-        <input
-          type="number"
-          step="0.01"
-          name="bodyFat"
-          value={this.state.bodyFat}
-          onChange={this.handleChange}
-        />
-        <br />
-        <label htmlFor="date">Date</label>
-        <input type="date" name="date" value={this.state.date} onChange={this.handleChange} />
-        <br />
+        <NumberInput name="weight" value={this.state.weight} onChange={this.handleChange} />
+        <NumberInput name="waist" value={this.state.waist} onChange={this.handleChange} />
+        <NumberInput name="body_fat" value={this.state.body_fat} onChange={this.handleChange} />
+        <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
         <input type="submit" />
       </form>
     );
