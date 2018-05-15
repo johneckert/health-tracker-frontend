@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import WeekForm from '../components/WeekForm';
-import DayForm from '../components/DayForm';
+import WeekForm from './WeekForm';
+import DayForm from './DayForm';
 
 class HealthContainer extends Component {
   render() {

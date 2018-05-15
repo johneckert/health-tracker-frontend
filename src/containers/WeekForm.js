@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import DateInput from './DateInput';
-import NumberInput from './NumberInput';
+import DateInput from '../components/DateInput';
+import NumberInput from '../components/NumberInput';
 
 class WeekForm extends Component {
   state = {
@@ -26,21 +26,24 @@ class WeekForm extends Component {
 
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
+  handleWeekSubmit = event => {
+    event.preventDefault();
+  };
+
   componentDidMount() {
     this.setDate();
   }
 
   render() {
-    console.log(this.state.date);
     return (
-      <form>
+      <div>
         <h2>Week Form </h2>
         <NumberInput name="weight" value={this.state.weight} onChange={this.handleChange} />
         <NumberInput name="waist" value={this.state.waist} onChange={this.handleChange} />
         <NumberInput name="body_fat" value={this.state.body_fat} onChange={this.handleChange} />
         <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
-        <input type="submit" />
-      </form>
+        <button onClick={this.handleWeekSubmit}>Log It</button>
+      </div>
     );
   }
 }

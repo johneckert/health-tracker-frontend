@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import DateInput from './DateInput';
-import SliderInput from './SliderInput';
-import BoolInput from './BoolInput';
-import TextInput from './TextInput';
+import DateInput from '../components/DateInput';
+import SliderInput from '../components/SliderInput';
+import BoolInput from '../components/BoolInput';
+import TextInput from '../components/TextInput';
 
 class DayForm extends Component {
   state = {
@@ -21,10 +21,16 @@ class DayForm extends Component {
     date: '' //date
   };
 
+  //Add a notes section
+
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
   toggleChange = event =>
     this.setState({ ...this.state, [event.target.name]: !this.state[event.target.name] });
+
+  handleDaySubmit = event => {
+    event.preventDefault();
+  };
 
   setDate = () => {
     var today = new Date();
@@ -47,7 +53,7 @@ class DayForm extends Component {
   render() {
     console.log(this.state);
     return (
-      <form>
+      <div>
         <h2>Day Form</h2>
         <SliderInput name="hunger" value={this.state.hunger} handleChange={this.handleChange} />
         <SliderInput name="cravings" value={this.state.cravings} handleChange={this.handleChange} />
@@ -99,8 +105,8 @@ class DayForm extends Component {
         />
 
         <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
-        <input type="submit" />
-      </form>
+        <button onClick={this.handleWeekSubmit}>Log It</button>
+      </div>
     );
   }
 }

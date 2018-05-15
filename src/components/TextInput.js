@@ -2,13 +2,15 @@ import React from 'react';
 
 const TextInput = props => {
   const createTitle = () => {
-    const titleArr = props.name.split('_');
-    titleArr.map(word => {
+    const capArr = props.name.split('_').map(word => {
       let wordArr = word.split('');
-      wordArr[0] = wordArr[0].toUpperCase;
+      wordArr[0] = wordArr[0].toUpperCase();
+      if (word === 'am' || word === 'pm') {
+        wordArr[1] = wordArr[1].toUpperCase();
+      }
       return wordArr.join('');
     });
-    return titleArr.join(' ');
+    return capArr.join(' ');
   };
 
   return (
