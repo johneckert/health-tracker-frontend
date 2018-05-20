@@ -18,7 +18,7 @@ class HealthContainer extends Component {
   }
 
   setCurrentUser = id => {
-    const relevantUser = this.state.users.filter(user => user.id == id);
+    const relevantUser = this.state.users.filter(user => user.id === parseInt(id));
     this.setState({ ...this.state, currentUser: relevantUser[0] });
   };
 
@@ -27,14 +27,23 @@ class HealthContainer extends Component {
   };
 
   render() {
-    console.log('set c_user', this.state.currentUser);
     return (
       <div>
-        <SelectUser users={this.state.users} setCurrentUser={this.setCurrentUser} />
-        <DayViz />
-        <DayForm />
-        <WeekViz />
-        <WeekForm />
+        <SelectUser
+          users={this.state.users}
+          setCurrentUser={this.setCurrentUser}
+          currentUser={this.currentUser}
+        />
+        {this.state.currentUser.username ? (
+          <div>
+            <DayViz />
+            <DayForm currentUser={this.state.currentUser} />
+            <WeekViz />
+            <WeekForm currentUser={this.state.currentUser} />
+          </div>
+        ) : (
+          <img src="/tenor.gif" alt="fat pusheen bouncing" />
+        )}
       </div>
     );
   }

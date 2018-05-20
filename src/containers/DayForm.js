@@ -18,7 +18,8 @@ class DayForm extends Component {
     after_meal_walk_pm: false, //boolean
     joyful_movement: '', //text
     presleep_routine: '', //text
-    date: '' //date
+    date: '', //date
+    currentUser: {}
   };
 
   //Add a notes section
@@ -46,8 +47,13 @@ class DayForm extends Component {
     this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
   };
 
+  setCurrentUser = () => {
+    this.setState({ ...this.state, currentUser: this.props.currentUser });
+  };
+
   componentDidMount() {
     this.setDate();
+    this.setCurrentUser();
   }
 
   render() {

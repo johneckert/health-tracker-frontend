@@ -7,7 +7,8 @@ class WeekForm extends Component {
     weight: 0,
     waist: 0,
     body_fat: 0,
-    date: ''
+    date: '',
+    currentUser: {}
   };
 
   setDate = () => {
@@ -24,6 +25,10 @@ class WeekForm extends Component {
     this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
   };
 
+  setCurrentUser = () => {
+    this.setState({ ...this.state, currentUser: this.props.currentUser });
+  };
+
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
   handleWeekSubmit = event => {
@@ -32,6 +37,7 @@ class WeekForm extends Component {
 
   componentDidMount() {
     this.setDate();
+    this.setCurrentUser();
   }
 
   render() {
