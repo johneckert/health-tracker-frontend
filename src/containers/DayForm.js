@@ -51,7 +51,6 @@ class DayForm extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <h2>Day Form</h2>
