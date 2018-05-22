@@ -40,8 +40,9 @@ class WeekForm extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(weekData)
-    }).then(response => response.json());
-    return this.defaultState;
+    })
+      .then(response => response.json())
+      .then(alert('Week Logged!! Good Job!!!!'));
   };
 
   setCurrentUser = () => {
@@ -50,17 +51,12 @@ class WeekForm extends Component {
 
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
-  // handleWeekSubmit = event => {
-  //   event.preventDefault();
-  // };
-
   componentDidMount() {
     this.setDate();
     this.setCurrentUser();
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <h2>Week Form </h2>

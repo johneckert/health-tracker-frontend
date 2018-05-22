@@ -83,8 +83,9 @@ class DayForm extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(dayData)
-    }).then(response => response.json());
-    return this.defaultState;
+    })
+      .then(response => response.json())
+      .then(alert('Day Logged!! Good Job!!!!'));
   };
 
   render() {
