@@ -76,7 +76,7 @@ class DayForm extends Component {
       date: this.state.date
     };
 
-    fetch('http://localhost:3000/days', {
+    fetch('https://skinnybitches-api.herokuapp.com/days', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

@@ -23,7 +23,7 @@ class HealthContainer extends Component {
   };
 
   getUsers = () => {
-    return fetch('http://localhost:3000/users').then(response => response.json());
+    return fetch('https://skinnybitches-api.herokuapp.com/users').then(response => response.json());
   };
 
   render() {

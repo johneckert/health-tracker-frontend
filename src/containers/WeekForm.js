@@ -33,7 +33,7 @@ class WeekForm extends Component {
       user_id: this.state.currentUser.id,
       date: this.state.date
     };
-    fetch('http://localhost:3000/weeks', {
+    fetch('https://skinnybitches-api.herokuapp.com/weeks', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
