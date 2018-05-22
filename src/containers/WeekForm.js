@@ -4,9 +4,9 @@ import NumberInput from '../components/NumberInput';
 
 class WeekForm extends Component {
   state = {
-    weight: 0,
-    waist: 0,
-    body_fat: 0,
+    weight: '0.00',
+    waist: '0.00',
+    body_fat: '0.00',
     date: '',
     currentUser: {}
   };
@@ -25,15 +25,34 @@ class WeekForm extends Component {
     this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
   };
 
+  handleWeekSubmit = () => {
+    const weekData = {
+      weight: this.state.weight,
+      waist: this.state.waist,
+      body_fat: this.state.body_fat,
+      user_id: this.state.currentUser.id,
+      date: this.state.date
+    };
+    fetch('http://localhost:3000/weeks', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(weekData)
+    }).then(response => response.json());
+    return this.defaultState;
+  };
+
   setCurrentUser = () => {
     this.setState({ ...this.state, currentUser: this.props.currentUser });
   };
 
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
-  handleWeekSubmit = event => {
-    event.preventDefault();
-  };
+  // handleWeekSubmit = event => {
+  //   event.preventDefault();
+  // };
 
   componentDidMount() {
     this.setDate();
@@ -41,14 +60,27 @@ class WeekForm extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h2>Week Form </h2>
-        <NumberInput name="weight" value={this.state.weight} onChange={this.handleChange} />
-        <NumberInput name="waist" value={this.state.waist} onChange={this.handleChange} />
-        <NumberInput name="body_fat" value={this.state.body_fat} onChange={this.handleChange} />
+        <NumberInput
+          name="weight"
+          value={parseInt(this.state.weight, 10)}
+          handleChange={this.handleChange}
+        />
+        <NumberInput
+          name="waist"
+          value={parseInt(this.state.waist, 10)}
+          handleChange={this.handleChange}
+        />
+        <NumberInput
+          name="body_fat"
+          value={parseInt(this.state.body_fat, 10)}
+          handleChange={this.handleChange}
+        />
         <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
-        <button onClick={this.handleWeekSubmit}>Log It</button>
+        <button onClick={() => this.handleWeekSubmit()}>Log It</button>
       </div>
     );
   }

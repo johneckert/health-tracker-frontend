@@ -24,6 +24,8 @@ class DayForm extends Component {
 
   //Add a notes section
 
+  defaultState = (() => this.state)();
+
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
   toggleChange = event =>
@@ -55,6 +57,35 @@ class DayForm extends Component {
     this.setDate();
     this.setCurrentUser();
   }
+
+  handleDaySubmit = () => {
+    const dayData = {
+      hunger: this.state.hunger,
+      cravings: this.state.cravings,
+      satiety: this.state.satiety,
+      energy_level: this.state.energy_level,
+      well_being: this.state.well_being,
+      processed_carbs: this.state.processed_carbs,
+      stress_reduction_am: this.state.stress_reduction_am,
+      stress_reduction_pm: this.state.stress_reduction_pm,
+      after_meal_walk_am: this.state.after_meal_walk_am,
+      after_meal_walk_pm: this.state.after_meal_walk_pm,
+      joyful_movement: this.state.joyful_movement,
+      presleep_routine: this.state.presleep_routine,
+      user_id: this.state.currentUser.id,
+      date: this.state.date
+    };
+
+    fetch('http://localhost:3000/days', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dayData)
+    }).then(response => response.json());
+    return this.defaultState;
+  };
 
   render() {
     return (
@@ -110,7 +141,7 @@ class DayForm extends Component {
         />
 
         <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
-        <button onClick={this.handleWeekSubmit}>Log It</button>
+        <button onClick={this.handleDaySubmit}>Log It</button>
       </div>
     );
   }

@@ -20,7 +20,7 @@ const NumberInput = props => {
         type="number"
         step="0.01"
         name={props.name}
-        value={props.value}
+        value={parseInt(props.value, 10)}
         onChange={props.handleChange}
       />
     </div>

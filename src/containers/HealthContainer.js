@@ -18,7 +18,7 @@ class HealthContainer extends Component {
   }
 
   setCurrentUser = id => {
-    const relevantUser = this.state.users.filter(user => user.id === parseInt(id));
+    const relevantUser = this.state.users.filter(user => user.id === parseInt(id, 10));
     this.setState({ ...this.state, currentUser: relevantUser[0] });
   };
 
