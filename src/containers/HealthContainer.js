@@ -36,9 +36,9 @@ class HealthContainer extends Component {
         />
         {this.state.currentUser.username ? (
           <div>
-            <DayViz />
+            <DayViz user_id={this.state.currentUser.id} />
             <DayForm currentUser={this.state.currentUser} />
-            <WeekViz />
+            <WeekViz user_id={this.state.currentUser.id} />
             <WeekForm currentUser={this.state.currentUser} />
           </div>
         ) : (
