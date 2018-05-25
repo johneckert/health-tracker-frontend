@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class SelectUser extends Component {
   handleChange = event => {
     this.props.setCurrentUser(event.target.value);
+    console.log(event.target.value);
   };
 
   render() {

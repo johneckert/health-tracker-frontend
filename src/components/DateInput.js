@@ -16,7 +16,12 @@ const DateInput = props => {
   return (
     <div>
       <span>{createTitle()}</span>
-      <input type="date" name="date" value={props.date} onChange={props.handleChange} />
+      <input
+        type="date"
+        name="date"
+        value={props.date}
+        onChange={event => props.handleDateChange(event)}
+      />
     </div>
   );
 };

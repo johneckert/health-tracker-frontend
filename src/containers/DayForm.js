@@ -17,9 +17,9 @@ class DayForm extends Component {
     after_meal_walk_am: false, //boolean
     after_meal_walk_pm: false, //boolean
     joyful_movement: '', //text
-    presleep_routine: '', //text
-    date: '', //date
-    currentUser: {}
+    presleep_routine: ''
+    // , //text
+    // date: ''
   };
 
   //Add a notes section
@@ -35,28 +35,24 @@ class DayForm extends Component {
     event.preventDefault();
   };
 
-  setDate = () => {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
-  };
+  // setDate = () => {
+  //   var today = new Date();
+  //   var dd = today.getDate();
+  //   var mm = today.getMonth() + 1;
+  //   var yyyy = today.getFullYear();
+  //   if (dd < 10) {
+  //     dd = '0' + dd;
+  //   }
+  //   if (mm < 10) {
+  //     mm = '0' + mm;
+  //   }
+  //   let currentDate = `${yyyy}-${mm}-${dd}`;
+  //   this.setState({ ...this.state, date: currentDate });
+  // };
 
-  setCurrentUser = () => {
-    this.setState({ ...this.state, currentUser: this.props.currentUser });
-  };
-
-  componentDidMount() {
-    this.setDate();
-    this.setCurrentUser();
-  }
+  // componentDidMount() {
+  //   this.setDate();
+  // }
 
   handleDaySubmit = () => {
     const dayData = {
@@ -72,8 +68,8 @@ class DayForm extends Component {
       after_meal_walk_pm: this.state.after_meal_walk_pm,
       joyful_movement: this.state.joyful_movement,
       presleep_routine: this.state.presleep_routine,
-      user_id: this.state.currentUser.id,
-      date: this.state.date
+      user_id: this.props.currentUser.id,
+      date: this.props.date
     };
 
     fetch('https://skinnybitches-api.herokuapp.com/days', {
@@ -141,7 +137,12 @@ class DayForm extends Component {
           handleChange={this.handleChange}
         />
 
-        <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
+        <DateInput
+          name="date"
+          handleDateChange={this.props.handleDateChange}
+          date={this.props.date}
+        />
+
         <button onClick={this.handleDaySubmit}>Log It</button>
       </div>
     );

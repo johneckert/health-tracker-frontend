@@ -7,31 +7,30 @@ class WeekForm extends Component {
     weight: '0.00',
     waist: '0.00',
     body_fat: '0.00',
-    date: '',
-    currentUser: {}
+    date: ''
   };
 
-  setDate = () => {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1;
-    var yyyy = today.getFullYear();
-    if (dd < 10) {
-      dd = '0' + dd;
-    }
-    if (mm < 10) {
-      mm = '0' + mm;
-    }
-    this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
-  };
+  // setDate = () => {
+  //   var today = new Date();
+  //   var dd = today.getDate();
+  //   var mm = today.getMonth() + 1;
+  //   var yyyy = today.getFullYear();
+  //   if (dd < 10) {
+  //     dd = '0' + dd;
+  //   }
+  //   if (mm < 10) {
+  //     mm = '0' + mm;
+  //   }
+  //   this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
+  // };
 
   handleWeekSubmit = () => {
     const weekData = {
       weight: this.state.weight,
       waist: this.state.waist,
       body_fat: this.state.body_fat,
-      user_id: this.state.currentUser.id,
-      date: this.state.date
+      user_id: this.props.currentUser.id,
+      date: this.props.date
     };
     fetch('https://skinnybitches-api.herokuapp.com/weeks', {
       method: 'POST',
@@ -45,16 +44,11 @@ class WeekForm extends Component {
       .then(alert('Week Logged!! Good Job!!!!'));
   };
 
-  setCurrentUser = () => {
-    this.setState({ ...this.state, currentUser: this.props.currentUser });
-  };
-
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
-  componentDidMount() {
-    this.setDate();
-    this.setCurrentUser();
-  }
+  // componentDidMount() {
+  //   this.setDate();
+  // }
 
   render() {
     return (
@@ -75,7 +69,8 @@ class WeekForm extends Component {
           value={parseInt(this.state.body_fat, 10)}
           handleChange={this.handleChange}
         />
-        <DateInput name="date" handleChange={this.handleChange} date={this.state.date} />
+        <DateInput name="date" handleDateChange={this.handleDateChange} date={this.props.date} />
+
         <button onClick={() => this.handleWeekSubmit()}>Log It</button>
       </div>
     );

@@ -3,32 +3,23 @@ import { Chart } from 'react-google-charts';
 
 class DayViz extends Component {
   state = {
-    options: {
-      title: 'Day Scores',
-      hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
-      vAxis: { title: 'Score', minValue: 0, maxValue: 20 },
-      // bar: { groupWidth: '95%' },
-      legend: 'none'
-    },
-    graphData: [],
+    // options: {
+    //   title: 'Day Scores',
+    //   hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
+    //   vAxis: { title: 'Score', minValue: 0, maxValue: 20 },
+    //   // bar: { groupWidth: '95%' },
+    //   legend: 'none'
+    // },
+    // graphData: [],
     currentMonth: 5
   };
 
-  componentDidMount() {
-    //set current month
-    this.setMonth();
-    this.getAllDays().then(json => {
-      //filter by user
-      const userDays = json.filter(day => day.user_id === this.props.user_id);
-      //filter only current month
-      userDays.filter(day => parseInt(day.date.split('-')[1], 10) === this.state.currentMonth);
+  // componentDidMount() {
+  //   // this.setMonth();
+  //   // this.buildGraph();
+  // }
 
-      const graphData = this.createDataPoints(userDays);
-      this.setState({ ...this.state, graphData: graphData });
-    });
-  }
-
-  setMonth = () => {
+  getMonth = () => {
     let today = new Date();
     this.setState({ ...this.state, currentMonth: today.getMonth() });
   };
@@ -41,6 +32,15 @@ class DayViz extends Component {
     } else {
       return '#FFD60D';
     }
+  };
+
+  options = () => {
+    return {
+      title: 'Day Scores',
+      hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
+      vAxis: { title: 'Score', minValue: 0, maxValue: 20 },
+      legend: 'none'
+    };
   };
 
   createDataPoints = dayArray => {
@@ -60,17 +60,23 @@ class DayViz extends Component {
     return graphArray;
   };
 
-  getAllDays = () => {
-    return fetch('https://skinnybitches-api.herokuapp.com/days').then(response => response.json());
+  buildGraph = () => {
+    const userDays = this.props.days.filter(day => day.user_id === this.props.currentUser.id);
+    //filter only current month
+    userDays.filter(day => parseInt(day.date.split('-')[1], 10) === this.props.date.split('-')[1]);
+
+    const graphData = this.createDataPoints(userDays);
+    return graphData;
   };
 
   render() {
+    console.log(this.props.currentUser.username);
     return (
       <div>
         <Chart
           chartType="ColumnChart"
-          data={this.state.graphData}
-          options={this.state.options}
+          data={this.buildGraph()}
+          options={this.options()}
           graph_id="ColumnChart"
           width="100%"
           height="400px"
