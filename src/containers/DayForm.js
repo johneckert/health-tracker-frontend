@@ -17,12 +17,10 @@ class DayForm extends Component {
     after_meal_walk_am: false, //boolean
     after_meal_walk_pm: false, //boolean
     joyful_movement: '', //text
-    presleep_routine: ''
-    // , //text
-    // date: ''
+    presleep_routine: '' //text
   };
 
-  //Add a notes section
+  //Add a notes section?
 
   defaultState = (() => this.state)();
 
@@ -34,25 +32,6 @@ class DayForm extends Component {
   handleDaySubmit = event => {
     event.preventDefault();
   };
-
-  // setDate = () => {
-  //   var today = new Date();
-  //   var dd = today.getDate();
-  //   var mm = today.getMonth() + 1;
-  //   var yyyy = today.getFullYear();
-  //   if (dd < 10) {
-  //     dd = '0' + dd;
-  //   }
-  //   if (mm < 10) {
-  //     mm = '0' + mm;
-  //   }
-  //   let currentDate = `${yyyy}-${mm}-${dd}`;
-  //   this.setState({ ...this.state, date: currentDate });
-  // };
-
-  // componentDidMount() {
-  //   this.setDate();
-  // }
 
   handleDaySubmit = () => {
     const dayData = {

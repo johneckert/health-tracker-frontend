@@ -10,20 +10,6 @@ class WeekForm extends Component {
     date: ''
   };
 
-  // setDate = () => {
-  //   var today = new Date();
-  //   var dd = today.getDate();
-  //   var mm = today.getMonth() + 1;
-  //   var yyyy = today.getFullYear();
-  //   if (dd < 10) {
-  //     dd = '0' + dd;
-  //   }
-  //   if (mm < 10) {
-  //     mm = '0' + mm;
-  //   }
-  //   this.setState({ ...this.state, date: `${yyyy}-${mm}-${dd}` });
-  // };
-
   handleWeekSubmit = () => {
     const weekData = {
       weight: this.state.weight,
@@ -45,10 +31,6 @@ class WeekForm extends Component {
   };
 
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
-
-  // componentDidMount() {
-  //   this.setDate();
-  // }
 
   render() {
     return (

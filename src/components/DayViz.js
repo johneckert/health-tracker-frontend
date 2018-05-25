@@ -2,23 +2,6 @@ import React, { Component } from 'react';
 import { Chart } from 'react-google-charts';
 
 class DayViz extends Component {
-  state = {
-    // options: {
-    //   title: 'Day Scores',
-    //   hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
-    //   vAxis: { title: 'Score', minValue: 0, maxValue: 20 },
-    //   // bar: { groupWidth: '95%' },
-    //   legend: 'none'
-    // },
-    // graphData: [],
-    currentMonth: 5
-  };
-
-  // componentDidMount() {
-  //   // this.setMonth();
-  //   // this.buildGraph();
-  // }
-
   getMonth = () => {
     let today = new Date();
     this.setState({ ...this.state, currentMonth: today.getMonth() });
