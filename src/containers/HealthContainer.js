@@ -59,12 +59,10 @@ class HealthContainer extends Component {
   };
 
   handleDateChange = event => {
-    console.log(event.target.value);
     this.setState({ ...this.state, date: event.target.value });
   };
 
   render() {
-    console.log(this.state.date);
     return (
       <div>
         <SelectUser
