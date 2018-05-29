@@ -45,15 +45,26 @@ class DayViz extends Component {
 
   buildGraph = () => {
     const userDays = this.props.days.filter(day => day.user_id === this.props.currentUser.id);
+    const sortedDays = userDays.sort((a, b) => {
+      if (a.date.split('-')[2] < b.date.split('-')[2]) {
+        return -1;
+      }
+      if (a.date.split('-')[2] > b.date.split('-')[2]) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     //filter only current month
-    userDays.filter(day => parseInt(day.date.split('-')[1], 10) === this.props.date.split('-')[1]);
+    sortedDays.filter(
+      day => parseInt(day.date.split('-')[1], 10) === this.props.date.split('-')[1]
+    );
 
     const graphData = this.createDataPoints(userDays);
     return graphData;
   };
 
   render() {
-    console.log(this.props.currentUser.username);
     return (
       <div>
         <Chart
