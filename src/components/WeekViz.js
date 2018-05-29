@@ -6,7 +6,7 @@ class WeekViz extends Component {
     return {
       title: 'Weight',
       hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
-      vAxis: { title: 'Pounds', minValue: 0, maxValue: 300 },
+      vAxis: { title: 'Pounds', minValue: 200, maxValue: 280 },
       curveType: 'function',
       colors: ['#39E60C'],
       lineWidth: 5,
@@ -17,7 +17,7 @@ class WeekViz extends Component {
     return {
       title: 'Waist',
       hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
-      vAxis: { title: 'Inches', minValue: 0, maxValue: 50 },
+      vAxis: { title: 'Inches', minValue: 35, maxValue: 55 },
       curveType: 'function',
       colors: ['#FF290D'],
       lineWidth: 5,
@@ -27,9 +27,9 @@ class WeekViz extends Component {
 
   optionsBMI = () => {
     return {
-      title: 'Waist',
+      title: '% Body Fat',
       hAxis: { title: 'Day', minValue: 0, maxValue: 31 },
-      vAxis: { title: '%', minValue: 0, maxValue: 100 },
+      vAxis: { title: '%', minValue: 30, maxValue: 50 },
       curveType: 'function',
       colors: ['#FFD60D'],
       lineWidth: 5,
