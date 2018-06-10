@@ -71,16 +71,21 @@ class WeekViz extends Component {
   buildGraph = graph_id => {
     const userWeeks = this.props.weeks.filter(week => week.user_id === this.props.currentUser.id);
     const sortedWeeks = userWeeks.sort((a, b) => {
-      if (a.date.split('-')[2] < b.date.split('-')[2]) {
+      let aMonthDay = a.date.split('-')[1].concat(a.date.split('-')[2]);
+      let bMonthDay = b.date.split('-')[1].concat(b.date.split('-')[2]);
+      if (aMonthDay < bMonthDay) {
         return -1;
       }
-      if (a.date.split('-')[2] > b.date.split('-')[2]) {
+      if (aMonthDay > bMonthDay) {
         return 1;
       } else {
         return 0;
       }
+      const graphData = this.createDataPoints(sortedWeeks, graph_id);
+      return graphData;
     });
-    const graphData = this.createDataPoints(sortedWeeks, graph_id);
+
+    const graphData = this.createDataPoints(userWeeks);
     return graphData;
   };
 

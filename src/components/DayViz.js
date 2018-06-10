@@ -46,10 +46,12 @@ class DayViz extends Component {
   buildGraph = () => {
     const userDays = this.props.days.filter(day => day.user_id === this.props.currentUser.id);
     const sortedDays = userDays.sort((a, b) => {
-      if (a.date.split('-')[2] < b.date.split('-')[2]) {
+      let aMonthDay = a.date.split('-')[1].concat(a.date.split('-')[2]);
+      let bMonthDay = b.date.split('-')[1].concat(b.date.split('-')[2]);
+      if (aMonthDay < bMonthDay) {
         return -1;
       }
-      if (a.date.split('-')[2] > b.date.split('-')[2]) {
+      if (aMonthDay > bMonthDay) {
         return 1;
       } else {
         return 0;
