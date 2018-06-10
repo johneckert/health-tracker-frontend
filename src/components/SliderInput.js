@@ -18,7 +18,7 @@ const SliderInput = props => {
       <span>{createTitle()}</span>
       <input
         type="range"
-        max="5"
+        max="4"
         step="1"
         name={props.name}
         list="ticks"
