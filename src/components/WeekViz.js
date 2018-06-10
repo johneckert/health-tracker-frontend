@@ -60,11 +60,6 @@ class WeekViz extends Component {
       const dataPoint = [dateVal, measurementVal];
       graphArray.push(dataPoint);
     });
-    //
-    // while (graphArray.length < 31) {
-    //   graphArray.push(['', '', '#ffffff']);
-    // }
-
     return graphArray;
   };
 

@@ -4,17 +4,17 @@ import NumberInput from '../components/NumberInput';
 
 class WeekForm extends Component {
   state = {
-    weight: '0.00',
-    waist: '0.00',
-    body_fat: '0.00',
+    weight: '0',
+    waist: '0',
+    body_fat: '0',
     date: ''
   };
 
   handleWeekSubmit = () => {
     const weekData = {
-      weight: this.state.weight,
-      waist: this.state.waist,
-      body_fat: this.state.body_fat,
+      weight: parseFloat(this.state.weight) || 0,
+      waist: parseFloat(this.state.waist) || 0,
+      body_fat: parseFloat(this.state.body_fat) || 0,
       user_id: this.props.currentUser.id,
       date: this.props.date
     };
@@ -32,25 +32,17 @@ class WeekForm extends Component {
 
   handleChange = event => this.setState({ ...this.state, [event.target.name]: event.target.value });
 
+  handleNumChange = event => {
+    this.setState({ ...this.state, [event.target.name]: parseFloat(event.target.value) });
+  };
+
   render() {
     return (
-      <div>
+      <div className="form">
         <h2>Week Form </h2>
-        <NumberInput
-          name="weight"
-          value={parseInt(this.state.weight, 10)}
-          handleChange={this.handleChange}
-        />
-        <NumberInput
-          name="waist"
-          value={parseInt(this.state.waist, 10)}
-          handleChange={this.handleChange}
-        />
-        <NumberInput
-          name="body_fat"
-          value={parseInt(this.state.body_fat, 10)}
-          handleChange={this.handleChange}
-        />
+        <NumberInput name="weight" value={this.state.weight} handleChange={this.handleChange} />
+        <NumberInput name="waist" value={this.state.waist} handleChange={this.handleChange} />
+        <NumberInput name="body_fat" value={this.state.body_fat} handleChange={this.handleChange} />
         <DateInput name="date" handleDateChange={this.handleDateChange} date={this.props.date} />
 
         <button onClick={() => this.handleWeekSubmit()}>Log It</button>

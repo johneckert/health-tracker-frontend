@@ -8,6 +8,7 @@ import WeekViz from '../components/WeekViz';
 class HealthContainer extends Component {
   state = {
     days: [],
+    weeks: [],
     users: [],
     currentUser: {},
     date: ''
@@ -71,7 +72,7 @@ class HealthContainer extends Component {
           currentUser={this.currentUser}
         />
         {this.state.currentUser.username ? (
-          <div>
+          <div className="main-container">
             <DayViz
               days={this.state.days}
               currentUser={this.state.currentUser}

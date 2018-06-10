@@ -7,7 +7,7 @@ class SelectUser extends Component {
 
   render() {
     return (
-      <div>
+      <div className="nav">
         <h2>Select User</h2>
         <select defaultValue="label" onChange={this.handleChange}>
           <option value="label" disabled>

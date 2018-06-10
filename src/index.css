@@ -14,3 +14,25 @@ body {
   font-family: sans-serif;
   size: 1em;
 }
+
+div {
+  width: 80vw;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  padding-left: 10em;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+}

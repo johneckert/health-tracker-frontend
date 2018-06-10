@@ -14,7 +14,7 @@ const SliderInput = props => {
   };
 
   return (
-    <div>
+    <div className="input">
       <span>{createTitle()}</span>
       <input
         type="range"

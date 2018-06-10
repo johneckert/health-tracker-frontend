@@ -14,7 +14,7 @@ const DateInput = props => {
   };
 
   return (
-    <div>
+    <div className="input">
       <span>{createTitle()}</span>
       <input
         type="date"

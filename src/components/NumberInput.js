@@ -14,15 +14,9 @@ const NumberInput = props => {
   };
 
   return (
-    <div>
+    <div className="input">
       <span>{createTitle()}</span>
-      <input
-        type="number"
-        step="0.01"
-        name={props.name}
-        value={parseInt(props.value, 10)}
-        onChange={props.handleChange}
-      />
+      <input type="text" name={props.name} value={props.value} onChange={props.handleChange} />
     </div>
   );
 };

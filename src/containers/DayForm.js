@@ -65,7 +65,7 @@ class DayForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <h2>Day Form</h2>
         <SliderInput name="hunger" value={this.state.hunger} handleChange={this.handleChange} />
         <SliderInput name="cravings" value={this.state.cravings} handleChange={this.handleChange} />

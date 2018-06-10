@@ -14,7 +14,7 @@ const TextInput = props => {
   };
 
   return (
-    <div>
+    <div className="input">
       <span>{createTitle()}</span>
       <input
         type="text"
