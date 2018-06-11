@@ -95,7 +95,9 @@ class HealthContainer extends Component {
             />
           </div>
         ) : (
-          <img src="/tenor.gif" alt="fat pusheen bouncing" />
+          <div className="image-container">
+            <img src="/tenor.gif" alt="fat pusheen bouncing" />
+          </div>
         )}
       </div>
     );

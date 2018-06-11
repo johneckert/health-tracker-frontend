@@ -8,10 +8,10 @@ class SelectUser extends Component {
   render() {
     return (
       <div className="nav">
-        <h2>Select User</h2>
+        <h1>Skinny Bitches</h1>
         <select defaultValue="label" onChange={this.handleChange}>
           <option value="label" disabled>
-            Select user
+            Select User
           </option>
           {this.props.users.map(user => {
             return (

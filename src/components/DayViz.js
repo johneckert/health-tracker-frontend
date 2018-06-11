@@ -68,14 +68,14 @@ class DayViz extends Component {
 
   render() {
     return (
-      <div>
+      <div className="chart-container">
         <Chart
           chartType="ColumnChart"
           data={this.buildGraph()}
           options={this.options()}
           graph_id="ColumnChart"
-          width="100%"
-          height="400px"
+          width="50vw"
+          height="30vw"
           legend_toggle
         />
       </div>

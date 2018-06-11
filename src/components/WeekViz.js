@@ -86,14 +86,14 @@ class WeekViz extends Component {
 
   render() {
     return (
-      <div>
+      <div className="chart-container">
         <Chart
           chartType="LineChart"
           data={this.buildGraph('weight')}
           options={this.optionsWeight()}
           graph_id="weight"
-          width="100%"
-          height="400px"
+          width="50vw"
+          height="30vw"
           legend_toggle
         />
         <Chart
@@ -101,8 +101,8 @@ class WeekViz extends Component {
           data={this.buildGraph('waist')}
           options={this.optionsWaist()}
           graph_id="waist"
-          width="100%"
-          height="400px"
+          width="50vw"
+          height="30vw"
           legend_toggle
         />
         <Chart
@@ -110,8 +110,8 @@ class WeekViz extends Component {
           data={this.buildGraph('bmi')}
           options={this.optionsBMI()}
           graph_id="bmi"
-          width="100%"
-          height="400px"
+          width="50vw"
+          height="30vw"
           legend_toggle
         />
       </div>
